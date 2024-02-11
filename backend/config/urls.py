@@ -11,7 +11,8 @@ urlpatterns = [
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
-    # path('users/', include('users.urls', namespace='users'))
+    path('api/v1/users/', include('users.urls', namespace='users')),
+    # path('api/v1/posts/', include('posts.urls', namespace='posts')),
 ]
 
 urlpatterns += doc_urls
