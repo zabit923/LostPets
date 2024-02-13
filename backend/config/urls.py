@@ -12,7 +12,7 @@ urlpatterns = [
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 
     path('api/v1/users/', include('users.urls', namespace='users')),
-    # path('api/v1/posts/', include('posts.urls', namespace='posts')),
+    path('api/v1/posts/', include('posts.urls', namespace='posts')),
 ]
 
 urlpatterns += doc_urls

@@ -14,15 +14,17 @@
             <div class="header_links">
                 <a class="header_item1" href=""><div>объявления</div></a>
                 <a id="open_pop_up_login" class="header_item2" href=""><div>вход</div></a>
-                <a class="header_item3" href=""><div>регистрация</div></a>
+                <a id="open_pop_up_register" class="header_item3" href=""><div>регистрация</div></a>
             </div>
+
+<!-- ____________________________________________________________________________________________________________________________ -->
 
             <div id="pop_up_login" class="pop_up">
                 <div class="pop_up_container">
                     <div class="pop_up_body">
                         <p>Авторизация</p>
                         <form id="loginForm">
-                            <input type="text" id="username" placeholder="Имя">
+                            <input type="text" id="username" placeholder="Никнейм">
                             <input type="password" id="password" placeholder="Пароль">
                             <button type="submit">Войти</button>
                         </form>
@@ -30,6 +32,27 @@
                     </div>
                 </div>
             </div>
+
+
+            <div id="pop_up_register" class="pop_up_register">
+                <div class="pop_up_register_container">
+                    <div class="pop_up_register_body">
+                        <p>Регистрация</p>
+                        <form id="RegisterForm">
+                            <input type="text" id="register_username" placeholder="Никнейм">
+                            <input type="password" id="register_password" placeholder="Пароль">
+                            <input type="text" id="first_name" placeholder="Имя">
+                            <input type="text" id="last_name" placeholder="Фамилия">
+                            <input type="email" id="email" placeholder="Email">
+                            <input type="number" id="age" placeholder="Возраст">
+                            <button type="submit">Зарегестрироваться</button>
+                        </form>
+                        <div id="close_pop_up_register" class="pop_up_close_register">&#10005</div>
+                    </div>
+                </div>
+            </div>
+
+<!-- ____________________________________________________________________________________________________________________________ -->
 
         </header>
         <main>main</main>
