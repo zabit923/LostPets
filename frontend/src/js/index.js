@@ -99,4 +99,34 @@ document.addEventListener('DOMContentLoaded', function(){
 
 // ____________________________________________________________________________________________________________________________
 
+    function loadData() {
+        fetch('http://127.0.0.1:8000/api/v1/posts/get_posts/')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Ошибка HTTP: ' + response.status);
+            }
+            return response.json();
+        })
+        .then(data => {
+            data.forEach(item => {
+                const card = document.querySelector(`.card[data-id="${item.id}"]`);
+                console.log(item)
+                if (card) {
+                    card.querySelector('.author').textContent = `Автор: ${item.author[1]}`;
+                    card.querySelector('.title').textContent = item.title;
+                    card.querySelector('.desc').textContent = item.desc;
+                    card.querySelector('.location').textContent = `Локация: ${item.location}`;
+                    if (item.image) {
+                        card.querySelector('.image').style.backgroundImage = `url(${item.image})`;
+                    }
+                }
+            });
+        })
+        .catch(error => console.error('Ошибка загрузки данных:', error));
+    }
+
+
+
+    loadData();
+
 });

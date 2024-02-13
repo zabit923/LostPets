@@ -35,6 +35,8 @@ footer{
     flex-shrink: 0;
 }
 
+/* __________________________________________________________________________________________________________________________________ */
+
 .link_logo{
     width: 50px;
     height: 50px;
@@ -92,6 +94,8 @@ footer{
 .header_item3:hover {
     color: rgb(255, 255, 255);
 }
+
+/* _________________________________________________________________________________________________________________________________ */
 
 .pop_up {
     opacity: 0;
@@ -274,3 +278,85 @@ footer{
     font-size: 34px;
     cursor: pointer;
 }
+
+/* __________________________________________________________________________________________________________________________ */
+
+.content {
+    display: grid;
+    padding-top: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 20px; 
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.image {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center; 
+}
+
+
+.author, .title, .desc, .location {
+    margin-bottom: 10px;
+}
+
+.desc {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    max-height: 1.2em;
+}
+
+.author{
+    font-weight: 600;
+}
+
+.title{
+    font-size: 24px;
+    font-size: 600;
+}
+
+.details-button {
+    background-color: #638889;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.details-button:hover {
+    background-color: #4c6869;
+}
+
+.card .read-more-btn {
+    grid-column: span 5;
+    padding: 10px;
+    text-align: center;
+    background-color: #638889;
+    color: #fff;
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.card .read-more-btn:hover {
+    background-color: #4c6869;
+}
+
+/* __________________________________________________________________________________________________________________________ */
+
