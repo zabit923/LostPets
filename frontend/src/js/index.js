@@ -7,8 +7,13 @@ document.addEventListener('DOMContentLoaded', function(){
     const closePopUpRegister = document.getElementById('close_pop_up_register');
     const popUpRegister = document.getElementById('pop_up_register');
 
+    const openPopUpPost = document.getElementById('open_pop_up_post');
+    const closePopUpPost = document.getElementById('close_pop_up_post');
+    const popUpPost = document.getElementById('pop_up_post');
+
     const loginForm = document.getElementById('loginForm');
     const registerForm = document.getElementById('RegisterForm');
+    const postForm = document.getElementById('PostForm');
 
 // ____________________________________________________________________________________________________________________________
 
@@ -30,6 +35,17 @@ document.addEventListener('DOMContentLoaded', function(){
 
     closePopUpRegister.addEventListener('click', () => {
         popUpRegister.classList.remove('active');
+    });
+
+
+
+    openPopUpPost.addEventListener('click', function(e){
+        e.preventDefault();
+        popUpPost.classList.add('active');
+    });
+
+    closePopUpPost.addEventListener('click', () => {
+        popUpPost.classList.remove('active');
     });
 
 // ____________________________________________________________________________________________________________________________
@@ -57,7 +73,8 @@ document.addEventListener('DOMContentLoaded', function(){
         })
         .then(data => {
             const token = data;
-            console.log('Bearer token:', token);
+            localStorage.setItem('token', token);
+            console.log('Bearer', token.access);
         })
         .catch(error => {
             console.error(error);
@@ -85,10 +102,40 @@ document.addEventListener('DOMContentLoaded', function(){
         })
         .then(response => {
             if (!response.ok) {
-                throw new Error('ok');
+                throw new Error('not ok');
             }
             popUpRegister.classList.remove('active');
-            alert('Регистрация прошла успешно');
+            alert('Регистрация прошла успешно.');
+            return response.json();
+        })
+        .catch(error => {
+            console.error(error);
+            console.log(error.response);
+        });        
+    });
+
+
+    postForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const token = localStorage.getItem('token');
+
+        const title = document.getElementById('title').value;
+        const desc = document.getElementById('register_password').value;
+        const location = document.getElementById('first_name').value;
+        const image = document.getElementById('last_name').value;
+
+
+        fetch('http://127.0.0.1:8000/api/v1/posts/create_post/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({ title, desc, location, image })
+        })
+        .then(response => {
+            popUpPost.classList.remove('active');
+            alert('Объявление создано.');
             return response.json();
         })
         .catch(error => {
@@ -98,35 +145,4 @@ document.addEventListener('DOMContentLoaded', function(){
     });
 
 // ____________________________________________________________________________________________________________________________
-
-    function loadData() {
-        fetch('http://127.0.0.1:8000/api/v1/posts/get_posts/')
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Ошибка HTTP: ' + response.status);
-            }
-            return response.json();
-        })
-        .then(data => {
-            data.forEach(item => {
-                const card = document.querySelector(`.card[data-id="${item.id}"]`);
-                console.log(item)
-                if (card) {
-                    card.querySelector('.author').textContent = `Автор: ${item.author[1]}`;
-                    card.querySelector('.title').textContent = item.title;
-                    card.querySelector('.desc').textContent = item.desc;
-                    card.querySelector('.location').textContent = `Локация: ${item.location}`;
-                    if (item.image) {
-                        card.querySelector('.image').style.backgroundImage = `url(${item.image})`;
-                    }
-                }
-            });
-        })
-        .catch(error => console.error('Ошибка загрузки данных:', error));
-    }
-
-
-
-    loadData();
-
 });

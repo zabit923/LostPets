@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/src/css/index.css">
     <script src="/src/js/index.js"></script>
+    <script src="/src/js/posts.js"></script>
     <title>Главная страница</title>
 </head>
 <body>
@@ -13,8 +14,9 @@
             <a class="link_logo" href="#"><img class="logo" src="/src/media/pngegg.png"></a>
             <div class="header_links">
                 <a class="header_item1" href=""><div>объявления</div></a>
-                <a id="open_pop_up_login" class="header_item2" href=""><div>вход</div></a>
-                <a id="open_pop_up_register" class="header_item3" href=""><div>регистрация</div></a>
+                <a id="open_pop_up_post" class="header_item2" href=""><div>добавить объявление</div></a>
+                <a id="open_pop_up_login" class="header_item3" href=""><div>вход</div></a>
+                <a id="open_pop_up_register" class="header_item4" href=""><div>регистрация</div></a>
             </div>
 
 <!-- ____________________________________________________________________________________________________________________________ -->
@@ -52,18 +54,28 @@
                 </div>
             </div>
 
+            <div id="pop_up_post" class="pop_up_post">
+                <div class="pop_up_post_container">
+                    <div class="pop_up_post_body">
+                        <p>Добавить объявление</p>
+                        <form id="PostForm">
+                            <input type="text" id="title" placeholder="Заголовок">
+                            <input type="text" id="desc" placeholder="Описание">
+                            <input type="text" id="location" placeholder="Локация">
+                            <input type="file" id="image" placeholder="Изображение">
+                            
+                            <button type="submit">Добавить</button>
+                        </form>
+                        <div id="close_pop_up_post" class="pop_up_close_post">&#10005</div>
+                    </div>
+                </div>
+            </div>
+
 <!-- ____________________________________________________________________________________________________________________________ -->
         </header>
         <main>
             <div class="content">
-                <div class="card" data-id="1">
-                    <div class="image"></div>
-                    <div class="author"></div>
-                    <div class="title"></div>
-                    <div class="desc"></div>
-                    <div class="location"></div>
-                    <button class="read-more-btn"></button>
-                </div>
+
             </div>
         </main>
         <footer>footer</footer>
