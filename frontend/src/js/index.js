@@ -65,15 +65,12 @@ document.addEventListener('DOMContentLoaded', function(){
             body: JSON.stringify({ username, password })
         })
         .then(response => {
-            if (!response.ok) {
-                throw new Error('ok');
-            }
             popUpLogin.classList.remove('active');
             return response.json();
         })
         .then(data => {
             const token = data;
-            localStorage.setItem('token', token);
+            localStorage.setItem('token', JSON.stringify(token));
             console.log('Bearer', token.access);
         })
         .catch(error => {
@@ -117,19 +114,19 @@ document.addEventListener('DOMContentLoaded', function(){
 
     postForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        const token = localStorage.getItem('token');
+        console.log(token);
 
         const title = document.getElementById('title').value;
-        const desc = document.getElementById('register_password').value;
-        const location = document.getElementById('first_name').value;
-        const image = document.getElementById('last_name').value;
+        const desc = document.getElementById('desc').value;
+        const location = document.getElementById('location').value;
+        const image = document.getElementById('image').value;
 
 
         fetch('http://127.0.0.1:8000/api/v1/posts/create_post/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token.access}`
             },
             body: JSON.stringify({ title, desc, location, image })
         })
